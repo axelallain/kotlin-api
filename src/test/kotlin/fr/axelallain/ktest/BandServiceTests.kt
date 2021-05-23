@@ -7,11 +7,14 @@ import org.aspectj.lang.annotation.Before
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.junit.jupiter.MockitoExtension
 import org.springframework.beans.factory.annotation.Autowired
 
+@ExtendWith(MockitoExtension::class)
 class BandServiceTests {
 
     @InjectMocks
@@ -19,7 +22,7 @@ class BandServiceTests {
 
     @Mock
     lateinit var bandService: BandService
-    
+
     @Test
     fun `should return the band with the name that has been searched`() {
         // given
