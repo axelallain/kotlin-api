@@ -12,4 +12,6 @@ class BandServiceImpl : BandService {
     lateinit var bandDao : BandDao
 
     override fun findAll(): MutableList<Band> = bandDao.findAll()
+
+    override fun findByName(name: String): Band? = bandDao.findByName(name)
 }

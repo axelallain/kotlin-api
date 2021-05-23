@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface BandDao : JpaRepository<Band, Int> {
+    fun findByName(name: String): Band?
 }
