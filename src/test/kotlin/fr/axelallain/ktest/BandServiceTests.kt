@@ -1,29 +1,37 @@
 package fr.axelallain.ktest
 
+import fr.axelallain.ktest.Controllers.RestController
 import fr.axelallain.ktest.Models.Band
 import fr.axelallain.ktest.Services.BandService
 import org.aspectj.lang.annotation.Before
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.mockito.InjectMocks
+import org.mockito.Mock
+import org.mockito.Mockito
 import org.springframework.beans.factory.annotation.Autowired
 
 class BandServiceTests {
 
-    @Autowired
+    @InjectMocks
+    lateinit var restController: RestController
+
+    @Mock
     lateinit var bandService: BandService
     
     @Test
     fun `should return the band with the name that has been searched`() {
         // given
-        var bands = mutableListOf(Band(1, "bandone"), Band(2, "bandtwo"))
+        var band = Band(1, "testband")
+        Mockito.`when`(bandService.findByName("testband")).thenReturn(band)
 
         // when
-        var result = bandService.findByName("bandtwo")
+        var result = restController.findByName("testband")
 
         // then
         if (result != null) {
-            assertThat(result.name).isEqualTo("bandtwo")
+            assertThat(result.name).isEqualTo("testband")
         }
     }
 }
