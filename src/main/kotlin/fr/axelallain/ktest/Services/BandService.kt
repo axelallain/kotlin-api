@@ -7,4 +7,6 @@ interface BandService {
     fun findAll(): MutableList<Band>
 
     fun findByName(name: String): Band?
+
+    fun addBand(band: Band): Band?
 }

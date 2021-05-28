@@ -6,8 +6,8 @@ import javax.persistence.*
 data class Band(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int = 0,
 
     @Column(nullable = false)
-    val name: String
+    val name: String = ""
 )

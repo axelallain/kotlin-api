@@ -14,4 +14,6 @@ class BandServiceImpl : BandService {
     override fun findAll(): MutableList<Band> = bandDao.findAll()
 
     override fun findByName(name: String): Band? = bandDao.findByName(name)
+
+    override fun addBand(band: Band): Band? = bandDao.save(band)
 }
